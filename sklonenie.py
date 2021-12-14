@@ -9,3 +9,4 @@ for procent in range(1, 101):
         text_procent = 'процентов'
 
     print(f'{procent} {text_procent}')
+    # коммент
