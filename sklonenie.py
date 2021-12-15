@@ -1,12 +1,11 @@
-for procent in range(1, 101):
-    #if 5 <= procent <= 20:
-    #    text_procent = 'процентов'
-    if procent % 10 == 1:
-        text_procent = 'процент'
-    elif 2 <= procent % 10 <= 4:
-        text_procent = 'процента'
+for percent in range(1, 101):
+    if 5 <= percent <= 20:
+        text_percent = 'процентов'
+    elif percent % 10 == 1:
+        text_percent = 'процент'
+    elif 2 <= percent % 10 <= 4:
+        text_percent = 'процента'
     else:
-        text_procent = 'процентов'
+        text_percent = 'процентов'
 
-    print(f'{procent} {text_procent}')
-    # коммент
+    print(f'{percent} {text_percent}')
