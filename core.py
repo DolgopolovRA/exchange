@@ -2,7 +2,6 @@ import os
 import shutil
 import datetime
 
-
 def create_file(name, text=None):
     with open(name, 'w', encoding='utf-8') as f:
         if text:
@@ -47,6 +46,10 @@ def save_info(message):
         f.write(result + '\n')
 
 
+def change_dir(new_path):
+    os.chdir(new_path)
+
+
 if __name__ == '__main__':
     create_file('text.dat')
     create_file('text.dat', 'some text')
@@ -58,3 +61,8 @@ if __name__ == '__main__':
     copy_file('new_f', 'new2')
     copy_file('text.dat', 'text2.dat')
     save_info('asd')
+    pt = input('Путь: ')
+    print(type(pt))
+    change_dir(pt)
+
+    print(os.getcwd())
