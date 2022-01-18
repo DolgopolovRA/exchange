@@ -26,4 +26,4 @@ def get_jokes(n=3, flag=1):
     return fun
 
 
-print(get_jokes())
+print(get_jokes(5))
