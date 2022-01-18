@@ -22,10 +22,10 @@ def thesaurus_adv(*args):
         if dict_1:  # если получили словарь
             sp_in = dict_1.get(i[0], False)  # проверяем наличие ключа по первой букве имени
             if sp_in:  # если есть список
-                dict_1.update({i[0]: sp_in + [i]}) # обновляем список
+                dict_1.update({i[0]: sp_in + [i]})  # обновляем список
             else:
-                dict_1.update({i[0]: [i]}) # создаём новый словарь
-        else: # нужно создать словарь
+                dict_1.update({i[0]: [i]})  # создаём новый словарь
+        else:  # нужно обновить словарь
             dict_f.update({key: {i[0]: [i]}})
 
     return dict_f
