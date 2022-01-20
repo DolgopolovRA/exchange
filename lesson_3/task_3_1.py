@@ -1,5 +1,3 @@
-
-
 def num_translate_adv(num_d):
     list_translate = {'one': 'один',
                       'two': 'два',

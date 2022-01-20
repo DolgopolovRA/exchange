@@ -1,4 +1,3 @@
-
 def thesaurus(*args):
     dict_f = {}
 
@@ -14,7 +13,6 @@ def thesaurus(*args):
 
 def thesaurus_adv(*args):
     dict_f = {}
-    dict_in = {}
 
     for i in args:
         key = i[i.find(" ")+1]  # получаем ключ первой буквы фамилии
