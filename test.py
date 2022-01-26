@@ -1,3 +1,9 @@
+str_in = input('Введите строку: ')
+num = 0
+str_in = (str_in[::-1])
+for i in range(0, len(str_in)):
+    if str_in[i] == '1':
+        num += 2 ** i
 
-nums = ['1578.4', '892.4', '354.1', '871.5']
-print(sum(map(float, nums)))  # 3696.4
+
+print(num)
