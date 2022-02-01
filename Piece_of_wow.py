@@ -1,3 +1,9 @@
+# import os
+# print(os.getcwd())
+#
+# num = open(fr"{os.getcwd()}\text_1.txt")
+# print(num.read())
+
 import argparse
 
 parser = argparse.ArgumentParser(description='Dict for users and hobby')
