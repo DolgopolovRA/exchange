@@ -19,10 +19,8 @@ for root, dirs, files in os.walk(root_dir):
             dict_res[key] = [str(int(val[0]) + 1), val[1]]
         else:
             dict_res.setdefault(key, ['1', [ext]])
-print(dict_res)
 for k, v in dict_res.items():
     dict_res.update({k: tuple(v)})
-print(dict_res)
 _, way = os.path.split(root_dir)
 with open(way + '_summary.json', 'w', encoding='utf-8') as f:
     f.write(json.dumps(dict_res))
