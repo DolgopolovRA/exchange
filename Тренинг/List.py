@@ -19,7 +19,6 @@ list_1 = [(2, 5), (2, 0), (1, 2), (4, 4), (2, 3), (2, 1)]
 list_1.sort(key=lambda x: x[-1])
 print(list_1)
 -------------------------------------
-"""
 str_1 = (input('List_1: '))
 list_1 = list(set(str_1.split(',')))
 # for i in list_1[:]:
@@ -27,3 +26,13 @@ list_1 = list(set(str_1.split(',')))
 #         list_1.remove(i)
 # list_1 = list(set(list_1))
 print(list_1)
+-------------------------------------
+str_1 = (input('List_1: '))
+list_1 = list(str_1.split(','))
+num = 0
+for elem in list_1:
+    if len(elem) >= 2 and elem[0] == elem[-1]:
+        num += 1
+print(num)
+-------------------------------------
+"""
