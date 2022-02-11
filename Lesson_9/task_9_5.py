@@ -8,7 +8,7 @@ class Stationery:
 
 class Pen(Stationery):
     def __init__(self, title):
-        super.__init__(title)
+        super().__init__(title)
 
     def draw(self):
         print(f'Запуск отрисоки ручкой {self.title}')
@@ -16,7 +16,7 @@ class Pen(Stationery):
 
 class Pencil(Stationery):
     def __init__(self, title):
-        super.__init__(title)
+        super().__init__(title)
 
     def draw(self):
         print(f'Запуск отрисоки карандашом {self.title}')
@@ -24,7 +24,15 @@ class Pencil(Stationery):
 
 class Handle(Stationery):
     def __init__(self, title):
-        super.__init__(title)
+        super().__init__(title)
 
     def draw(self):
         print(f'Запуск отрисоки маркером {self.title}')
+
+
+pen = Pen('шариковая')
+pen.draw()
+penc = Pencil('красный')
+penc.draw()
+handle = Handle('синий')
+handle.draw()
