@@ -1,0 +1,159 @@
+r@r-VirtualBox:~$ mkdir students mentors
+r@r-VirtualBox:~$ cd students/
+r@r-VirtualBox:~/students$ >students_list.txt
+r@r-VirtualBox:~/students$ nano students_list.txt
+r@r-VirtualBox:~/students$ cd ..
+r@r-VirtualBox:~$ cd mentors/
+r@r-VirtualBox:~/mentors$ >mentors_list.txt
+r@r-VirtualBox:~/mentors$ nano mentors_list.txt 
+r@r-VirtualBox:~/mentors$ mv mentors_list.txt ~/students
+r@r-VirtualBox:~/mentors$ cd ..
+r@r-VirtualBox:~$ rm mentors/ -r
+r@r-VirtualBox:~$ mv students/ students_and_mentors/
+r@r-VirtualBox:~$ rm students_and_mentors/ -r
+
+r@r-VirtualBox:~$ sudo apt update
+[sudo] пароль для r: 
+Сущ:1 http://ru.archive.ubuntu.com/ubuntu focal InRelease
+Пол:2 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Пол:3 http://ru.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+Пол:4 http://ru.archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
+Пол:5 http://ru.archive.ubuntu.com/ubuntu focal-updates/main amd64 DEP-11 Metadata [279 kB]
+Пол:6 http://ru.archive.ubuntu.com/ubuntu focal-updates/universe amd64 DEP-11 Metadata [391 kB]
+Пол:7 http://ru.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 DEP-11 Metadata [940 B]
+Пол:8 http://ru.archive.ubuntu.com/ubuntu focal-backports/main amd64 DEP-11 Metadata [7 980 B]
+Пол:9 http://ru.archive.ubuntu.com/ubuntu focal-backports/universe amd64 DEP-11 Metadata [30,5 kB]
+Получено 1 045 kB за 1с (790 kB/s)                                    
+Чтение списков пакетов… Готово
+Построение дерева зависимостей       
+Чтение информации о состоянии… Готово
+Может быть обновлено 2 пакета. Запустите «apt list --upgradable» для их показа.
+r@r-VirtualBox:~$ apt list --upgradable 
+Вывод списка… Готово
+libjavascriptcoregtk-4.0-18/focal-updates,focal-security 2.34.6-0ubuntu0.20.04.1 amd64 [может быть обновлён с: 2.34.4-0ubuntu0.20.04.1]
+libwebkit2gtk-4.0-37/focal-updates,focal-security 2.34.6-0ubuntu0.20.04.1 amd64 [может быть обновлён с: 2.34.4-0ubuntu0.20.04.1]
+
+r@r-VirtualBox:~$ sudo apt upgrade -y
+[sudo] пароль для r: 
+Чтение списков пакетов… Готово
+Построение дерева зависимостей       
+Чтение информации о состоянии… Готово
+Расчёт обновлений… Готово
+Следующие НОВЫЕ пакеты будут установлены:
+  libopengl0
+Следующие пакеты будут обновлены:
+  libjavascriptcoregtk-4.0-18 libwebkit2gtk-4.0-37
+Обновлено 2 пакетов, установлено 1 новых пакетов, для удаления отмечено 0 пакетов, и 0 пакетов не обновлено.
+2 standard security updates
+Необходимо скачать 20,4 MB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 225 kB.
+Пол:1 http://ru.archive.ubuntu.com/ubuntu focal-updates/main amd64 libopengl0 amd64 1.3.2-1~ubuntu0.20.04.1 [29,3 kB]
+Пол:2 http://ru.archive.ubuntu.com/ubuntu focal-updates/main amd64 libwebkit2gtk-4.0-37 amd64 2.34.6-0ubuntu0.20.04.1 [14,1 MB]
+Пол:3 http://ru.archive.ubuntu.com/ubuntu focal-updates/main amd64 libjavascriptcoregtk-4.0-18 amd64 2.34.6-0ubuntu0.20.04.1 [6 257 kB]
+Получено 20,4 MB за 2с (8 755 kB/s)                          
+Выбор ранее не выбранного пакета libopengl0:amd64.
+(Чтение базы данных … на данный момент установлено 147127 файлов и каталогов.)
+Подготовка к распаковке …/libopengl0_1.3.2-1~ubuntu0.20.04.1_amd64.deb …
+Распаковывается libopengl0:amd64 (1.3.2-1~ubuntu0.20.04.1) …
+Подготовка к распаковке …/libwebkit2gtk-4.0-37_2.34.6-0ubuntu0.20.04.1_amd64.de
+b …
+Распаковывается libwebkit2gtk-4.0-37:amd64 (2.34.6-0ubuntu0.20.04.1) на замену 
+(2.34.4-0ubuntu0.20.04.1) …
+Подготовка к распаковке …/libjavascriptcoregtk-4.0-18_2.34.6-0ubuntu0.20.04.1_a
+md64.deb …
+Распаковывается libjavascriptcoregtk-4.0-18:amd64 (2.34.6-0ubuntu0.20.04.1) на 
+замену (2.34.4-0ubuntu0.20.04.1) …
+Настраивается пакет libjavascriptcoregtk-4.0-18:amd64 (2.34.6-0ubuntu0.20.04.1)
+ …
+Настраивается пакет libopengl0:amd64 (1.3.2-1~ubuntu0.20.04.1) …
+Настраивается пакет libwebkit2gtk-4.0-37:amd64 (2.34.6-0ubuntu0.20.04.1) …
+Обрабатываются триггеры для libc-bin (2.31-0ubuntu9.2) …
+
+r@r-VirtualBox:~$ sudo apt install openssh-server -y
+Чтение списков пакетов… Готово
+Построение дерева зависимостей       
+Чтение информации о состоянии… Готово
+Будут установлены следующие дополнительные пакеты:
+  ncurses-term openssh-sftp-server ssh-import-id
+Предлагаемые пакеты:
+  molly-guard monkeysphere ssh-askpass
+Следующие НОВЫЕ пакеты будут установлены:
+  ncurses-term openssh-server openssh-sftp-server ssh-import-id
+Обновлено 0 пакетов, установлено 4 новых пакетов, для удаления отмечено 0 пакетов, и 0 пакетов не обновлено.
+Необходимо скачать 688 kB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 6 010 kB.
+Пол:1 http://ru.archive.ubuntu.com/ubuntu focal/main amd64 ncurses-term all 6.2-0ubuntu2 [249 kB]
+Пол:2 http://ru.archive.ubuntu.com/ubuntu focal-updates/main amd64 openssh-sftp-server amd64 1:8.2p1-4ubuntu0.4 [51,5 kB]
+Пол:3 http://ru.archive.ubuntu.com/ubuntu focal-updates/main amd64 openssh-server amd64 1:8.2p1-4ubuntu0.4 [377 kB]
+Пол:4 http://ru.archive.ubuntu.com/ubuntu focal/main amd64 ssh-import-id all 5.10-0ubuntu1 [10,0 kB]
+Получено 688 kB за 0с (1 704 kB/s)  
+Предварительная настройка пакетов …
+Выбор ранее не выбранного пакета ncurses-term.
+(Чтение базы данных … на данный момент установлено 147134 файла и каталога.)
+Подготовка к распаковке …/ncurses-term_6.2-0ubuntu2_all.deb …
+Распаковывается ncurses-term (6.2-0ubuntu2) …
+Выбор ранее не выбранного пакета openssh-sftp-server.
+Подготовка к распаковке …/openssh-sftp-server_1%3a8.2p1-4ubuntu0.4_amd64.deb …
+Распаковывается openssh-sftp-server (1:8.2p1-4ubuntu0.4) …
+Выбор ранее не выбранного пакета openssh-server.
+Подготовка к распаковке …/openssh-server_1%3a8.2p1-4ubuntu0.4_amd64.deb …
+Распаковывается openssh-server (1:8.2p1-4ubuntu0.4) …
+Выбор ранее не выбранного пакета ssh-import-id.
+Подготовка к распаковке …/ssh-import-id_5.10-0ubuntu1_all.deb …
+Распаковывается ssh-import-id (5.10-0ubuntu1) …
+Настраивается пакет openssh-sftp-server (1:8.2p1-4ubuntu0.4) …
+Настраивается пакет openssh-server (1:8.2p1-4ubuntu0.4) …
+
+Creating config file /etc/ssh/sshd_config with new version
+Creating SSH2 RSA key; this may take some time ...
+3072 SHA256:TsXAR+Id2g/TEZ7rT7dcTng9ajeohr691+3QLn8L8gE root@r-VirtualBox (RSA)
+Creating SSH2 ECDSA key; this may take some time ...
+256 SHA256:pzrG30N8PcO4UD2OVyJvXbEjFLkUaUD1uA9zh/f45+0 root@r-VirtualBox (ECDSA
+)
+Creating SSH2 ED25519 key; this may take some time ...
+256 SHA256:mDuSTKOXlE+w8EdP4mFLXQ2+59d4W0u9r12T4Knacrs root@r-VirtualBox (ED255
+19)
+Created symlink /etc/systemd/system/sshd.service → /lib/systemd/system/ssh.serv
+ice.
+Created symlink /etc/systemd/system/multi-user.target.wants/ssh.service → /lib/
+systemd/system/ssh.service.
+rescue-ssh.target is a disabled or a static unit, not starting it.
+Настраивается пакет ssh-import-id (5.10-0ubuntu1) …
+Attempting to convert /etc/ssh/ssh_import_id
+Настраивается пакет ncurses-term (6.2-0ubuntu2) …
+Обрабатываются триггеры для systemd (245.4-4ubuntu3.15) …
+Обрабатываются триггеры для man-db (2.9.1-1) …
+Обрабатываются триггеры для ufw (0.36-6ubuntu1) …
+
+r@r-VirtualBox:~$ sudo systemctl enable ssh
+Synchronizing state of ssh.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable ssh
+
+r@r-VirtualBox:~$ sudo systemctl start ssh
+r@r-VirtualBox:~$ sudo systemctl status ssh
+● ssh.service - OpenBSD Secure Shell server
+     Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: enabled)
+     Active: active (running) since Tue 2022-03-01 18:25:06 +03; 3min 55s ago
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+   Main PID: 5126 (sshd)
+      Tasks: 1 (limit: 2295)
+     Memory: 1.0M
+     CGroup: /system.slice/ssh.service
+             └─5126 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+
+мар 01 18:25:06 r-VirtualBox systemd[1]: Starting OpenBSD Secure Shell server...
+мар 01 18:25:06 r-VirtualBox sshd[5126]: Server listening on 0.0.0.0 port 22.
+мар 01 18:25:06 r-VirtualBox sshd[5126]: Server listening on :: port 22.
+мар 01 18:25:06 r-VirtualBox systemd[1]: Started OpenBSD Secure Shell server.
+
+r@r-VirtualBox:~$ hostname -I
+192.168.1.38 
+
+Следующие команды вводим в MobaXterrm при активном подключении(по паролю) по ssh
+
+r@r-VirtualBox:~$ cat >> .ssh/authorized_keys << EOF
+> ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDOcdxh1REE9GGH3H8sBI4moGuBvPonNhi37fxAB9vDVKhQF7zA94Dfqm1+TPEMDT4megKROd9uBb6MmlmjAGpk/0Iv4WCy09V09hakG6C3MUavBzMUxlc2Gm0CeJOCXwB7HSqSwA+3dWOUA3I5ULVOTOoxBNH1zDCiMLOxg9ulXNjvpkjcqB+R5KSrTBon4cf29nO4wmRYYm/4ch7/zXy6rDVnx2virUopRsY7y7RrPY0RBnmyGn8HU5B+nByvpiNDxYoFOpFscLtQ+MbIET0nrCpQCbIu1znHhRX93RA5pMEfzuPLWwiHoReVhlbV84QZveKGHN8pYfISMDIz+oSX rsa-key-20220301
+> EOF
+
+Далее в настройка соединения указываем приватный ключ, выполняем перезапуск и всё работает)

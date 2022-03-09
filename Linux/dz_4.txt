@@ -1,0 +1,3 @@
+r@r-VirtualBox:~$ echo new file > new_file
+r@r-VirtualBox:~$ cd /etc
+r@r-VirtualBox:/etc$ cat * 2>~/err_cat
