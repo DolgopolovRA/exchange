@@ -58,4 +58,3 @@ print(cell_3.num_cell)
 
 cell_3 = cell_1 / cell_2
 print(cell_3.num_cell)
-
