@@ -1,0 +1,157 @@
+----------------------------------------------1
+
+r@r-VirtualBox:~$ echo 123asd > file1
+r@r-VirtualBox:~$ cp file1 file2
+r@r-VirtualBox:~$ ln -s file1 file3
+r@r-VirtualBox:~$ ln file1 file4
+r@r-VirtualBox:~$ ll -i
+итого 120
+433556 drwxr-xr-x 15 r    r    4096 мар 22 13:59  ./
+393334 -rw-rw-r--  2 r    r       7 мар 22 13:50  file1
+393377 -rw-rw-r--  1 r    r       7 мар 22 13:56  file2
+393360 lrwxrwxrwx  1 r    r       5 мар 22 13:58  file3 -> file1
+393334 -rw-rw-r--  2 r    r       7 мар 22 13:50  file4
+r@r-VirtualBox:~$ rm file1
+r@r-VirtualBox:~$ cat file1
+cat: file1: Нет такого файла или каталога
+r@r-VirtualBox:~$ cat file2
+123asd
+r@r-VirtualBox:~$ cat file3
+cat: file3: Нет такого файла или каталога
+r@r-VirtualBox:~$ cat file4
+123asd
+
+------------------------------------------------2
+
+r@r-VirtualBox:~$ mv file2 fl2
+r@r-VirtualBox:~$ mv file3 fl3
+r@r-VirtualBox:~$ mv file4 fl4
+r@r-VirtualBox:~$ mkdir test
+r@r-VirtualBox:~$ mv fl3 test
+r@r-VirtualBox:~$ mv ln_fl2 test
+r@r-VirtualBox:~$ ls -l -R
+.:
+итого 56
+-rw-rw-r-- 1 r r 4985 мар  9 17:06  err_cat
+-rw-rw-r-- 1 r r    7 мар 22 13:56  fl2
+-rw-rw-r-- 1 r r    7 мар 22 13:50  fl4
+-rw-rw-r-- 1 r r    9 мар  9 16:29  new_file
+drwxrwxr-x 2 r r 4096 мар 22 14:15  test
+drwxr-xr-x 2 r r 4096 фев 28 20:01  Видео
+drwxr-xr-x 2 r r 4096 фев 28 20:01  Документы
+drwxr-xr-x 2 r r 4096 фев 28 20:01  Загрузки
+drwxr-xr-x 2 r r 4096 фев 28 20:01  Изображения
+drwxr-xr-x 2 r r 4096 фев 28 20:01  Музыка
+drwxr-xr-x 2 r r 4096 фев 28 20:01  Общедоступные
+drwxr-xr-x 2 r r 4096 фев 28 20:01 'Рабочий стол'
+drwxr-xr-x 2 r r 4096 фев 28 20:01  Шаблоны
+
+./test:
+итого 0
+lrwxrwxrwx 1 r r 5 мар 22 13:58 fl3 -> file1
+lrwxrwxrwx 1 r r 3 мар 22 14:13 ln_fl2 -> fl2
+
+------------------------------------------------3
+
+r@r-VirtualBox:~$ echo > f1
+r@r-VirtualBox:~$ echo > f2
+r@r-VirtualBox:~$ ls -l
+итого 8
+-rw-rw-r-- 1 r r 1 мар 22 14:21 f1
+-rw-rw-r-- 1 r r 1 мар 22 14:21 f2
+r@r-VirtualBox:~$ chmod 600 f2
+r@r-VirtualBox:~$ ls -l
+итого 8
+-rw-rw-r-- 1 r r 1 мар 22 14:21 f1
+-rw------- 1 r r 1 мар 22 14:21 f2
+
+------------------------------------------------4
+
+r@r-VirtualBox:~$ sudo groupadd developer
+[sudo] пароль для r: 
+r@r-VirtualBox:~$ cat /etc/group
+...
+test_group:x:1001:
+test_root:x:1002:
+developer:x:1003:
+
+sudo useradd -s /bin/bash -g developer dev1
+sudo useradd -s /bin/bash -g developer dev2
+r@r-VirtualBox:~$ sudo passwd dev1
+Новый пароль : 
+Повторите ввод нового пароля : 
+passwd: пароль успешно обновлён
+r@r-VirtualBox:~$ sudo passwd dev2
+Новый пароль : 
+Повторите ввод нового пароля : 
+passwd: пароль успешно обновлён
+
+r@r-VirtualBox:~$ id -Gn dev1
+developer
+r@r-VirtualBox:~$ id -Gn dev2
+developer
+
+r@r-VirtualBox:~$ mkdir dev
+r@r-VirtualBox:~$ ls -l
+итого 4
+drwxrwxr-x 2 r r 4096 мар 22 16:38 dev
+
+r@r-VirtualBox:~$ sudo chown :developer dev
+r@r-VirtualBox:~$ ls -l
+итого 4
+drwxrwxr-x 2 r developer 4096 мар 22 16:38 dev
+r@r-VirtualBox:~$ sudo chmod g+s dev
+r@r-VirtualBox:~$ setfacl -d -m g:developer:rwx dev/
+r@r-VirtualBox:~$ ls -l
+итого 4
+drwxrwsr-x+ 2 r developer 4096 мар 23 09:57 dev
+r@r-VirtualBox:~$ su dev1
+Пароль: 
+dev1@r-VirtualBox:/home/r$ cd dev/
+dev1@r-VirtualBox:/home/r/dev$ echo 123 > f1
+dev1@r-VirtualBox:/home/r/dev$ ls -l
+итого 4
+-rw-rw-r--+ 1 dev1 developer 4 мар 23 10:10 f1
+dev1@r-VirtualBox:/home/r/dev$ exit
+exit
+r@r-VirtualBox:~$ su dev2
+Пароль: 
+dev2@r-VirtualBox:/home/r$ cd dev/
+dev2@r-VirtualBox:/home/r/dev$ echo asd >> f1
+dev2@r-VirtualBox:/home/r/dev$ cat f1
+123
+asd
+
+------------------------------------------------5
+
+r@r-VirtualBox:~$ cd dev/
+r@r-VirtualBox:~/dev$ mkdir tmp
+r@r-VirtualBox:~/dev$ chmod +t tmp/
+r@r-VirtualBox:~/dev$ ls -l
+итого 8
+-rw-rw-r--+ 1 dev1 developer    8 мар 23 10:11 f1
+drwxrwxr-t+ 2 r    developer 4096 мар 23 10:17 tmp
+
+------------------------------------------------6
+
+r@r-VirtualBox:~$ mkdir share
+r@r-VirtualBox:~$ cd share/
+r@r-VirtualBox:~/share$ echo 123 > f1
+r@r-VirtualBox:~/share$ echo asd > f2
+r@r-VirtualBox:~/share$ ls -l
+итого 8
+-rw-rw-r-- 1 r r 4 мар 23 10:27 f1
+-rw-rw-r-- 1 r r 4 мар 23 10:27 f2
+r@r-VirtualBox:~/share$ cd ..
+r@r-VirtualBox:~$ chmod 111 share/
+r@r-VirtualBox:~$ ls -l
+итого 4
+d--x--x--x 2 r r 4096 мар 23 10:27 share
+r@r-VirtualBox:~$ cd share/
+r@r-VirtualBox:~/share$ ls
+ls: невозможно открыть каталог '.': Отказано в доступе
+r@r-VirtualBox:~/share$ cat f1
+123
+r@r-VirtualBox:~/share$ cat f2
+asd
+r@r-VirtualBox:~/share$ 
