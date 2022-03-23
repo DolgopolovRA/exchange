@@ -1,3 +1,32 @@
 r@r-VirtualBox:~$ echo new file > new_file
 r@r-VirtualBox:~$ cd /etc
 r@r-VirtualBox:/etc$ cat * 2>~/err_cat
+
+r@r-VirtualBox:~$ ls -la | cut -c 1-10 | sort | uniq
+drwx------
+drwxr-xr-x
+-rw-------
+-rw-r-----
+-rw-r--r--
+итого
+
+r@r-VirtualBox:~$ sudo nano /etc/ssh/sshd_config
+r@r-VirtualBox:~$ systemctl restart sshd
+r@r-VirtualBox:~$ sudo nano /etc/ssh/sshd_config
+r@r-VirtualBox:~$ systemctl reload sshd
+r@r-VirtualBox:~$ cat > new_file
+asdasdr@r-VirtualBox:~$ ls
+ new_file   Документы   Изображения   Общедоступные   Шаблоны
+ Видео      Загрузки    Музыка       'Рабочий стол'
+r@r-VirtualBox:~$ cat new_file
+asdasdr@r-VirtualBox:~$ 
+# получается закрыли файл с сохранением
+
+r@r-VirtualBox:~$ sudo apt install mc
+r@r-VirtualBox:~$ mc
+# во втором открытом терминале работаем далее
+r@r-VirtualBox:~$ ps -aux | grep mc
+r          21762  0.0  0.4  22432  9048 pts/0    S+   20:37   0:00 mc
+r          21771  0.0  0.0   8940   656 pts/2    S+   20:37   0:00 grep --color=auto mc
+r@r-VirtualBox:~$ kill -9 21762
+

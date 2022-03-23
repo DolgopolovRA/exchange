@@ -1,0 +1,14 @@
+r@r-VirtualBox:~$ uname
+Linux
+r@r-VirtualBox:~$ uname -a
+Linux r-VirtualBox 5.13.0-30-generic #33~20.04.1-Ubuntu SMP Mon Feb 7 14:25:10 UTC 2022 x86_64 x86_64 x86_64 GNU/Linux
+r@r-VirtualBox:~$ hostnamectl
+   Static hostname: r-VirtualBox
+         Icon name: computer-vm
+           Chassis: vm
+        Machine ID: 016507aecd22462b808887752b060bba
+           Boot ID: cd916b7b1d954707abd0e04ade9e29b7
+    Virtualization: oracle
+  Operating System: Ubuntu 20.04.4 LTS
+            Kernel: Linux 5.13.0-30-generic
+      Architecture: x86-64
