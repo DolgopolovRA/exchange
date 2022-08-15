@@ -19,24 +19,18 @@
 
 def min_val_n2(lst):
     """Общая сложность O(N^2)"""
-    res = lst[0]
-    lst_copy = lst[:]                     # O(N)
-    for el in lst:                        # O(N)
-        for el_copy in lst_copy:          # O(N)
-            if el_copy < el:              # O(1)
-                res = el_copy             # O(1)
-    return res                            # O(1)
+    while len(lst) > 1:           # O(N)
+        if lst[0] <= lst[1]:      # O(1)
+            del lst[1]            # O(N)
+        else:                     # O(1)
+            del lst[0]            # O(N)
+    return lst[0]                 # O(1)
 
 
 def min_val_n(lst):
     """Общая сложность O(N)"""
-    res = lst[0]          # O(1)
-    for el in lst:        # O(N)
-        if el < res:      # O(1)
-            res = el      # O(1)
-    return res            # O(1)
-
-
-lst1 = [-56, 67, -89, 4, 23, 1, 134, 26, 56, 2, 2, 2, 2, -3, 24, -3, -3, 345, 1, 23, 67, 234234]
-_min = min_val_n2(lst1)
-print(_min)
+    res = lst[0]                  # O(1)
+    for el in lst:                # O(N)
+        if el < res:              # O(1)
+            res = el              # O(1)
+    return res                    # O(1)

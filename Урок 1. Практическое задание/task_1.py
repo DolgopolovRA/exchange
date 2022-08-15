@@ -39,6 +39,7 @@ def check_2(lst_obj):
 
     Сложность: O(N^2), т.к. O(N) вложена в O(N)
     """
+
     for j in range(len(lst_obj)):          # O(N)
         if lst_obj[j] in lst_obj[j+1:]:    # O(N)
             return False                   # O(1)
