@@ -35,8 +35,11 @@ class Cash:
 
 
 cash_obj = Cash()
+
 print(cash_obj.check_url('www.123.ru'))
 print(cash_obj.check_url('www.123.ru'))
+
 print(cash_obj.check_url('www.qwerty.ru'))
 print(cash_obj.check_url('www.qwerty.ru'))
+
 print(cash_obj.urls)
