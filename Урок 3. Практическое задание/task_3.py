@@ -34,4 +34,6 @@ for i in range(len(s)):
         else:
             if i > 0:
                 set_hash.add(sha256(s[i:].encode('utf-8')).hexdigest())
-print(*enumerate(set_hash, 1), sep='\n')
+
+print(set_hash)
+# print(*enumerate(set_hash, 1), sep='\n')

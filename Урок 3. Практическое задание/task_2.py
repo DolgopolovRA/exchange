@@ -21,36 +21,15 @@ f1dcaeeafeb855965535d77c55782349444b
 или, если вы уже знаете, как Python взаимодействует с базами данных,
 воспользуйтесь базой данный sqlite, postgres и т.д.
 п.с. статья на Хабре - python db-api
-
-
-from hashlib import pbkdf2_hmac
-import psycopg2
-from os import urandom
-
-
-def ret_psw_hash(password, salt):
-    psw_hash = pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 1000)
-    return psw_hash.hex()
-
-
-_salt = urandom(32)
-print(_salt.hex())
-psw = input('Введите пароль: ')
-try:
-    connect_db = psycopg2.connect(user='postgres', password='root', host='127.0.0.1', port='5432', database='testdb')
-    cursor = connect_db.cursor()
-    cursor.execute('INSERT INTO psw(user, hash) VALUES (%s, %s)', ('user_1', ret_psw_hash(psw, _salt)))
-    connect_db.commit()
-    cursor.close()
-    connect_db.close()
-
-except Exception as err:
-    print("Ошибка при работе с БД PostgreSQL", err)
 """
 
 import json
 from hashlib import pbkdf2_hmac
 from os import urandom
+from mysql.connector import connect, Error
+
+
+"""Решение при помощи json файла"""
 
 
 def ret_psw_hash(password, salt):
@@ -69,3 +48,34 @@ with open('psw.json', 'r') as psw_file:
         print('Вы ввели правильный пароль')
     else:
         print('Вы ввели не правильный пароль')
+
+
+"""Решение при помощи БД"""
+
+
+try:
+    with connect(host="localhost", user="root", password="rootroot", database="testdb") as connection:
+        login = input('Введите логин: ')
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT hash_psw, salt FROM users WHERE login = %s", (login,))
+            result = cursor.fetchone()
+            psw_1 = input('Введите пароль: ')
+            if result:
+                if ret_psw_hash(psw_1, result[1]) == result[0]:
+                    print('Вы ввели правильный пароль')
+                else:
+                    print('Вы ввели не правильный пароль')
+            else:
+                _salt = urandom(32)
+                hash_1 = ret_psw_hash(psw_1, _salt)
+                psw_2 = input('Введите пароль ещё раз: ')
+                hash_2 = ret_psw_hash(psw_2, _salt)
+                if hash_2 == hash_1:
+                    cursor.execute("INSERT INTO users(login, hash_psw, salt) VALUES (%s, %s, %s)",
+                                   (login, hash_1, _salt))
+                    connection.commit()
+                    print('Вы ввели правильный пароль')
+                else:
+                    print('Вы ввели не правильный пароль')
+except Error as e:
+    print(e)
