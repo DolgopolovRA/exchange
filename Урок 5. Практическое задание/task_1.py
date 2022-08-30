@@ -30,15 +30,16 @@
 """
 import collections
 
-companies = collections.namedtuple('companies', 'company profit')
-s = 'company'
-dct_companies = {input('Введите название предприятия: '):
-                 tuple(map(int, input('введите прибыль данного предприятия: ').split()))
-                 for i in range(int(input('Введите количество предприятий для расчета прибыли: ')))}
+dct_companies = collections.defaultdict(tuple)
+for _ in range(int(input('Введите количество предприятий для расчета прибыли: '))):
+    key = input('Введите название предприятия: ')
+    val = tuple(map(int, input('введите прибыль данного предприятия: ').split()))
+    dct_companies[key] = val
 
 mid_profit = sum(map(sum, dct_companies.values())) / len(dct_companies)
-down_mid_profit = companies(k for k, v in dct_companies.items() if sum(v) < mid_profit)
-up_mid_profit = companies(k for k, v in dct_companies.items() if sum(v) > mid_profit)
+down_mid_profit = list(k for k, v in dct_companies.items() if sum(v) < mid_profit)
+up_mid_profit = list(k for k, v in dct_companies.items() if sum(v) > mid_profit)
+
 print(f'Средняя годовая прибыль всех предприятий: {mid_profit}')
-print(f'Предприятия, с прибылью выше среднего значения: {up_mid_profit}')
-print(f'Предприятия, с прибылью ниже среднего значения: {down_mid_profit}')
+print(f'Предприятия, с прибылью выше среднего значения: {", ".join(up_mid_profit)}')
+print(f'Предприятия, с прибылью ниже среднего значения: {", ".join(down_mid_profit)}')
