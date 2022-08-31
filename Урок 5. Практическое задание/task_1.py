@@ -30,11 +30,13 @@
 """
 import collections
 
-dct_companies = collections.defaultdict(tuple)
+companies = collections.namedtuple('company', ['name', 'profit'])
+dct_companies = {}
 for _ in range(int(input('Введите количество предприятий для расчета прибыли: '))):
-    key = input('Введите название предприятия: ')
-    val = tuple(map(int, input('введите прибыль данного предприятия: ').split()))
-    dct_companies[key] = val
+    companies.name = input('Введите название предприятия: ')
+    companies.profit = tuple(map(int, input('введите прибыль данного предприятия: ').split()))
+    print(companies.name, companies.profit)
+    dct_companies[companies.name] = companies.profit
 
 mid_profit = sum(map(sum, dct_companies.values())) / len(dct_companies)
 down_mid_profit = list(k for k, v in dct_companies.items() if sum(v) < mid_profit)

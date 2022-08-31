@@ -10,18 +10,9 @@
 from collections import OrderedDict
 from timeit import timeit
 
-o_dct = OrderedDict()
-dct = {}
-
-
-def o_dct_fill():
-    global o_dct
-    o_dct = {i: i for i in range(1000000)}
-
 
 def dct_fill():
-    global dct
-    dct = {i: i for i in range(1000000)}
+    return {i: i for i in range(1000000)}
 
 
 def o_dct_pop(d):
@@ -64,8 +55,12 @@ def dct_popitem(d):
         d.popitem()
 
 
-print(f'Время работы функции {o_dct_fill.__name__} - {timeit("o_dct_fill()", globals=globals(), number=10)}')
-print(f'Время работы функции {dct_fill.__name__} - {timeit("dct_fill()", globals=globals(), number=10)}')
+dct = dct_fill()
+o_dct = OrderedDict(dct)
+print(len(o_dct))
+print(len(dct))
+
+
 print(f'Время работы функции {o_dct_pop.__name__} - {timeit("o_dct_pop(o_dct)", globals=globals(), number=100000)}')
 print(f'Время работы функции {dct_pop.__name__} - {timeit("dct_pop(dct)", globals=globals(), number=100000)}')
 print(f'Время работы функции {o_dct_get.__name__} - {timeit("o_dct_get(o_dct)", globals=globals(), number=1000)}')
@@ -80,8 +75,7 @@ print(f'Время работы функции {dct_popitem.__name__} - {timeit(
 
 ЗАМЕРЫ
 
-Время работы функции o_dct_fill - 1.9352168000041274
-Время работы функции dct_fill - 1.9140021000057459
+
 Время работы функции o_dct_pop - 0.29518639999150764
 Время работы функции dct_pop - 0.2831632999877911
 Время работы функции o_dct_get - 2.0643611999985296
