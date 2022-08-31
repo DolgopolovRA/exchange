@@ -35,7 +35,6 @@ dct_companies = {}
 for _ in range(int(input('Введите количество предприятий для расчета прибыли: '))):
     companies.name = input('Введите название предприятия: ')
     companies.profit = tuple(map(int, input('введите прибыль данного предприятия: ').split()))
-    print(companies.name, companies.profit)
     dct_companies[companies.name] = companies.profit
 
 mid_profit = sum(map(sum, dct_companies.values())) / len(dct_companies)
