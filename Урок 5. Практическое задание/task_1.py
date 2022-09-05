@@ -30,7 +30,6 @@
 """
 import collections
 
-<<<<<<< Updated upstream
 companies = collections.namedtuple('company', ['name', 'profit'])
 dct_companies = {}
 for _ in range(int(input('Введите количество предприятий для расчета прибыли: '))):
