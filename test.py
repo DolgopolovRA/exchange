@@ -1,13 +1,13 @@
-def verify(matrix):
-    for i in range(len(matrix)-1):
-        sm = list(map(sum, zip(matrix[i], matrix[i+1])))
-        for j in range(1, len(sm)):
-            if sm[j] == 2 or sm[j] == sm[j-1] == 1:
-                return False
-    else:
-        return True
+# ввод значения N (эту переменную не менять)
+N = int(input())
+
+# здесь продолжайте программу
+def get_sum(n):
+    for i in range(n):
+        yield sum(range(1, i+1))
 
 
-m = [[1, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0], [0, 1, 0, 1, 0], [0, 0, 0, 0, 0]]
+a = get_sum(N)
+for _ in range(25):
+    print(next(a))
 
-print(verify(m))

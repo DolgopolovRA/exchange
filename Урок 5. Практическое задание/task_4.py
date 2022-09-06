@@ -57,8 +57,6 @@ def dct_popitem(d):
 
 dct = dct_fill()
 o_dct = OrderedDict(dct)
-print(len(o_dct))
-print(len(dct))
 
 
 print(f'Время работы функции {o_dct_pop.__name__} - {timeit("o_dct_pop(o_dct)", globals=globals(), number=100000)}')
