@@ -25,20 +25,21 @@ def func_median(lst):
     return max(lst)
 
 
-list_in = [randint(-100, 100) for _ in range(11)]
+m = 5
+list_in = [randint(-100, 100) for _ in range(2 * m + 1)]
 
 # замеры 10
 print(f'10 элементов - {timeit("func_median(list_in[:])", globals=globals(), number=1000)}')
 print(f'медиана = {func_median(list_in[:])}')
 
-
-list_in = [randint(-100, 100) for _ in range(101)]
+m = 50
+list_in = [randint(-100, 100) for _ in range(2 * m + 1)]
 # замеры 100
 print(f'100 элементов - {timeit("func_median(list_in[:])", globals=globals(), number=1000)}')
 print(f'медиана = {func_median(list_in[:])}')
 
-
-list_in = [randint(-100, 100) for _ in range(1001)]
+m = 500
+list_in = [randint(-100, 100) for _ in range(2 * m + 1)]
 # замеры 1000
 print(f'1000 элементов - {timeit("func_median(list_in[:])", globals=globals(), number=1000)}')
 print(f'медиана = {func_median(list_in[:])}')
