@@ -1,2 +1,15 @@
-lst = input().split().sort(key=lambda x: x.index(tp))
-print(*lst)
+a = "Номер;Имя;Оценка;Зачет\n" \
+    "1;Портос;5;Да\n" \
+    "2;Арамис;3;Да\n" \
+    "3;Атос;4;Да\n" \
+    "4;д'Артаньян;2;Нет\n" \
+    "5;Балакирев;1;Нет"
+
+import sys
+
+# считывание списка из входного потока (не меняйте переменную lst_in в программе)
+# lst_in = list(map(str.strip, sys.stdin.readlines()))
+
+# здесь продолжайте программу (используйте список строк lst_in)
+lst_in = a.split('\n')
+print(sorted(lst_in))

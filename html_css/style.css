@@ -1,16 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: sans-serif;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    padding-top: 42px;
+}
+
+.top {
+    height: 768px;
+    background: linear-gradient(0deg, #EBF3FB 8.84%, rgba(152, 195, 232, 0) 31.12%);
+}
+
+.top_info {
+    padding-top: 115px;
 }
 
 .paragraph {
     font-size: 16px;
     line-height: 26px;
     color: #1F3F68;
+    letter-spacing: 0.05em;
+    opacity: 0.6;
 }
 
 .h1 {
+    width: 510px;
+    font-weight: 300;
     font-size: 64px;
+    line-height: 74px;
+    letter-spacing: 0.04em;
     color: #1F3F68;
+    margin-bottom: 32px;
+}
+
+.width-425 {
+    width: 425px;
+}
+
+.top__button {
+    font-size: 16px;
+    line-height: 26px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
+    background: #5A98D0;
+    box-shadow: 5px 10px 20px rgba(53, 110, 173, 0.2);
+    border-radius: 10px;
+    padding: 15px 50px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 71px;
 }
 
 .h2_contacts {
@@ -22,6 +69,15 @@ body {
 .h3 {
     font-size: 36px;
     text-align: center;
+}
+
+.card-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card {
+    width: 359px;
 }
 
 .h4 {
@@ -47,4 +103,27 @@ body {
     text-align: center;
     color: #FFFFFF;
     text-transform: uppercase;
+}
+
+.container {
+    width: 1140px;
+    margin: 0 auto;
+}
+
+.width-340 {
+    width: 340px;
+}
+
+.width-495 {
+    width: 495px;
+}
+
+.footer-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-center {
+    display: flex;
+    justify-content: baseline;
 }
